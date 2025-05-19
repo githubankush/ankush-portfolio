@@ -1,9 +1,12 @@
+// 👇 Add these at the top
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
+
 import nodemailer from 'nodemailer';
 
 export async function POST(req) {
   const { name, email, message } = await req.json();
 
-  // create transporter
   let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -12,10 +15,9 @@ export async function POST(req) {
     },
   });
 
-  // email content - this is where you send the message content
   const mailOptions = {
     from: process.env.EMAIL_USER,
-    to: process.env.EMAIL_USER,  // your email to receive messages
+    to: process.env.EMAIL_USER,
     subject: `New contact form message from ${name}`,
     text: `Name: ${name}\nEmail: ${email}\nMessage:\n${message}`,
   };
