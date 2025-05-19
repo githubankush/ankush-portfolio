@@ -1,6 +1,5 @@
-// 👇 Add these at the top
-export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
 import nodemailer from 'nodemailer';
 
