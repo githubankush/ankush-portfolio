@@ -1,3 +1,15 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+ 
+const colors = require("tailwindcss/colors");
+const {
+  default: flattenColorPalette,
+} = require("tailwindcss/lib/util/flattenColorPalette");
+ 
+/** @type {import('tailwindcss').Config} */
+
+
+
+
 /** @type {import('tailwindcss').Config} */
 export default {
     darkMode: ["class"],
@@ -24,8 +36,8 @@ export default {
   		colors: {
   			primary: "#1c1c22",
   			accent: {
-				DEFAULT: "00ff99",
-				hover: "00e187",
+				DEFAULT: "#00ff99",
+				hover: "#00e187",
 			},
   		
   		},
@@ -36,5 +48,17 @@ export default {
   		}
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), addVariablesForColors],
 };
+
+
+function addVariablesForColors({ addBase, theme }) {
+	let allColors = flattenColorPalette(theme("colors"));
+	let newVars = Object.fromEntries(
+	  Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+	);
+   
+	addBase({
+	  ":root": newVars,
+	});
+  }

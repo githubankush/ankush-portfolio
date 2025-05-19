@@ -14,8 +14,15 @@ const Photo = () => {
     <motion.div 
     initial={{opacity: 0}}
     animate={{opacity: 1, transition: {delay:2.4, duration: 0.4, ease:easeInOut}}}
-    className="w-[298px] h-[298px] xl:w-[498px] xl:h-[498px] mix-blend-lighten absolute">
-        <Image src="/assets/pic.jpg" priority quality={100} fill alt="" className="object-contain" />
+    className="w-[198px] h-[198px] xl:w-[499px] xl:h-[498px] mix-blend-lighten absolute">
+        <Image src="/assets/portfolio_image2.jpg" 
+        priority quality={100}
+        fill
+        alt="" 
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 52vw, 33vw"
+        className="object-cover p-4 rounded-full"
+
+        />
     </motion.div>
 
     {/* circle */}

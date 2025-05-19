@@ -1,25 +1,27 @@
 "use client"
 
-import Link from "next/link"
-import {FaGithub, FaLinkedinIn, FaTwitter} from "react-icons/fa"
-import { usePathname } from "next/navigation"
+import { FaGithub, FaLinkedinIn, FaTwitter } from "react-icons/fa"
 
 const socials = [
-    {icon: <FaGithub/>, path:"/"},
-    {icon: <FaLinkedinIn/>, path:"/"},
-    {icon: <FaTwitter/>, path:"/"},
+  { icon: <FaGithub />, path: "https://github.com/githubankush" },
+  { icon: <FaLinkedinIn />, path: "https://www.linkedin.com/in/ankushkumayu/" },
+  { icon: <FaTwitter />, path: "https://x.com/AnkushKumayu" },
 ]
-const Social = ({containerSytles, iconStyles}) => {
-    const pathname = usePathname();
+
+const Social = ({ containerSytles, iconStyles }) => {
   return (
     <div className={containerSytles}>
-      {
-        socials.map((item,index)=>{
-          return <Link href={item.path} key={index} className={iconStyles}>
-            {item.icon}
-          </Link>
-        })
-      }
+      {socials.map((item, index) => (
+        <a
+          href={item.path}
+          key={index}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={iconStyles}
+        >
+          {item.icon}
+        </a>
+      ))}
     </div>
   )
 }
