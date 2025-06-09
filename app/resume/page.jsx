@@ -20,9 +20,8 @@ import { DiMongodb } from "react-icons/di";
 const about = {
   info: "About me",
   description:
-    "Hi, I'm Ankush Kumayu, a passionate and driven web developer currently pursuing a B.Tech in Computer Science & Engineering from Prestige College, Indore. I enjoy building interactive and user-friendly web applications using modern technologies like React.js, Node.js, and Tailwind CSS.\n\nOver the past year, I’ve worked on a variety of projects ranging from full-stack web apps to real-time computer vision games. I recently completed a frontend development internship at TNGS.ES, where I contributed to an educational soccer website and developed an interactive quiz to boost user engagement.\n\nI'm constantly learning and exploring new tools in the tech ecosystem, with a keen interest in AI, data science, and intuitive user experience design. I'm currently seeking opportunities where I can contribute, grow, and solve real-world problems through technology.",
+    "Hi, I'm Ankush Kumayu, a passionate and driven web developer completed a B.Tech in Computer Science & Engineering from Prestige College, Indore. I enjoy building interactive and user-friendly web applications using modern technologies like React.js, Node.js, and Tailwind CSS.\n\nOver the past year, I’ve worked on a variety of projects ranging from full-stack web apps to real-time computer vision games. I recently completed a frontend development internship at TNGS.ES, where I contributed to an educational soccer website and developed an interactive quiz to boost user engagement.\n\nI'm constantly learning and exploring new tools in the tech ecosystem, with a keen interest in AI, data science, and intuitive user experience design. I'm currently seeking opportunities where I can contribute, grow, and solve real-world problems through technology.",
   info: [
-
     {
       title: "Email",
       content: "ankushkumayu04@gmail.com",
@@ -37,7 +36,6 @@ const about = {
     },
   ],
 };
-
 
 // experience data
 const experience = {
@@ -65,7 +63,7 @@ const education = {
     institute:
       "Prestige Institute of Engineering Management & Research, Indore",
     yearOfQualification: 2025,
-    CGPA: "7.86/10",
+    CGPA: "7.95/10",
   },
   highSchool: {
     level: "Higher Secondary (12th)",
@@ -157,7 +155,6 @@ const skills = {
   ],
 };
 
-
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Tooltip,
@@ -174,6 +171,11 @@ const projects = {
   description:
     "A showcase of the projects I have worked on, highlighting my skills and contributions.",
   details: [
+    {
+      title: "Shoppy e Commerce Website",
+      content:
+        "Developed a modern and responsive eCommerce web application featuring product browsing, cart functionality, and secure user authentication. Implemented role-based access with JWT and bcrypt. Built an admin dashboard for managing products and users. Used technologies like Node.js, Express.js, MongoDB and Tailwind CSS to deliver a seamless shopping experience.",
+    },
     {
       title: "Potato Leaf Blight Detection",
       content:
@@ -333,7 +335,8 @@ const resume = () => {
                     className="p-4 rounded-lg shadow-md border-2 border-gray-800"
                   >
                     <h1 className="text-xl mb-2 font-bold text-white ">
-                      {"-> "}{elem.title}
+                      {"-> "}
+                      {elem.title}
                     </h1>
                     <p className="text-lg font-bold text-gray-400">
                       {elem.content}
@@ -352,8 +355,9 @@ const resume = () => {
 
               {about.info.map((elem, index) => (
                 <div key={index} className="mb-4">
-                 
-                  <p className="text-base text-lg font-bold text-gray-300">{elem.content}</p>
+                  <p className="text-base text-lg font-bold text-gray-300">
+                    {elem.content}
+                  </p>
                 </div>
               ))}
             </TabsContent>
