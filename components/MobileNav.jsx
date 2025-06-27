@@ -1,38 +1,55 @@
-"use client"
+"use client";
 
-import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetTrigger,
+  SheetContent,
+  SheetTitle, // ✅ Import this
+} from "@/components/ui/sheet";
+
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { CiMenuFries } from "react-icons/ci"
+import { CiMenuFries } from "react-icons/ci";
 
 const links = [
-    { name: "home", path: "/" },
-  // { name: "services", path: "/services" },
+  { name: "home", path: "/" },
   { name: "resume", path: "/resume" },
-  // { name: "work", path: "/work" },
   { name: "contact", path: "/contact" },
-    
-]
+];
 
 const MobileNav = () => {
-    const pathname = usePathname();
+  const pathname = usePathname();
 
-  return <Sheet>
-    <SheetTrigger className="flex justify-center items-center">
+  return (
+    <Sheet>
+      <SheetTrigger className="flex justify-center items-center">
         <CiMenuFries className="text-[32px] text-[#00ff99]" />
-    </SheetTrigger>
-    
-    <SheetContent className="flex flex-col justify-center items-center gap-4">
-      {/* logo */}
-        
+      </SheetTrigger>
+
+      <SheetContent className="flex flex-col justify-center items-center gap-4">
+        {/* ✅ Required for accessibility */}
+        <SheetTitle className="sr-only">Mobile Navigation</SheetTitle>
 
         <nav className="flex flex-col justify-center items-center gap-4">
-          {links.map((link,index) =>{
-            return <Link href={link.path} key={index} className={`text-xl transition-all capitalize ${pathname === link.path &&  "text-[#00ff99] border-b-2 border-[#00ff99]" }`}>{link.name}</Link>
-          })}
+          {links.map((link, index) => (
+            <Link
+              href={link.path}
+              key={index}
+              className={`text-xl transition-all capitalize ${
+                pathname === link.path &&
+                "text-[#00ff99] border-b-2 border-[#00ff99]"
+              }`}
+            >
+              {link.name}
+            </Link>
+          ))}
         </nav>
-    </SheetContent>
-  </Sheet>
-}
+      </SheetContent>
+    </Sheet>
+  );
+};
 
-export default MobileNav
+export default MobileNav;
+
+
+

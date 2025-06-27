@@ -16,11 +16,66 @@ import {
 import { SiTailwindcss, SiNextdotjs, SiMysql } from "react-icons/si";
 import { DiMongodb } from "react-icons/di";
 
+const techKeywords = [
+  "JWT",
+  "bcrypt",
+  "React",
+  "Node.js",
+  "Express.js",
+  "MongoDB",
+  "Tailwind CSS",
+  "Next.js",
+  "three.js",
+  "TensorFlow",
+  "FastAPI",
+  "OpenCV",
+  "JavaScript",
+  "Python",
+  "Zod",
+  "Razorpay",
+];
+
+const highlightTechnologies = (text) => {
+  const regex = new RegExp(`\\b(${techKeywords.join("|")})\\b`, "gi");
+  return text.replace(regex, (match) => {
+    return `<span style="color: #00FF99; font-weight: 600;">${match}</span>`;
+  });
+};
+
+const devKeywords = [
+  "full stack",
+  "frontend",
+  "backend",
+  "web",
+  "developer",
+  "UI",
+  "UX",
+  "responsive",
+  "authentication",
+  "authorization",
+  "dashboard",
+  "eCommerce",
+];
+
+const highlightKeywords = (text) => {
+  const allKeywords = [...techKeywords, ...devKeywords].sort(
+    (a, b) => b.length - a.length
+  );
+  const escapedKeywords = allKeywords.map((k) =>
+    k.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+  );
+  const regex = new RegExp(`\\b(${escapedKeywords.join("|")})\\b`, "gi");
+
+  return text.replace(regex, (match) => {
+    return `<span class="text-[#00FF99] font-semibold">${match}</span>`;
+  });
+};
+
 // about data
 const about = {
   info: "About me",
   description:
-    "Hi, I'm Ankush Kumayu, a passionate and driven web developer completed a B.Tech in Computer Science & Engineering from Prestige College, Indore. I enjoy building interactive and user-friendly web applications using modern technologies like React.js, Node.js, and Tailwind CSS.\n\nOver the past year, I’ve worked on a variety of projects ranging from full-stack web apps to real-time computer vision games. I recently completed a frontend development internship at TNGS.ES, where I contributed to an educational soccer website and developed an interactive quiz to boost user engagement.\n\nI'm constantly learning and exploring new tools in the tech ecosystem, with a keen interest in AI, data science, and intuitive user experience design. I'm currently seeking opportunities where I can contribute, grow, and solve real-world problems through technology.",
+    "Hi, I'm Ankush Kumayu, a passionate and driven web developer completed a B.Tech in Computer Science & Engineering from Prestige Institute Of Engineering Management And Research, Indore. I enjoy building interactive and user-friendly web applications using modern technologies like React.js, Node.js, and Tailwind CSS.\n\nOver the past year, I’ve worked on a variety of projects ranging from full-stack web apps to real-time computer vision games. I recently completed a frontend development internship at TNGS.ES, where I contributed to an educational soccer website and developed an interactive quiz to boost user engagement.\n\nI'm constantly learning and exploring new tools in the tech ecosystem, with a keen interest in AI, data science, and intuitive user experience design. I'm currently seeking opportunities where I can contribute, grow, and solve real-world problems through technology.",
   info: [
     {
       title: "Email",
@@ -172,9 +227,14 @@ const projects = {
     "A showcase of the projects I have worked on, highlighting my skills and contributions.",
   details: [
     {
-      title: "Shoppy e Commerce Website",
+      title: "Shoppy E-commerce Website",
       content:
-        "Developed a modern and responsive eCommerce web application featuring product browsing, cart functionality, and secure user authentication. Implemented role-based access with JWT and bcrypt. Built an admin dashboard for managing products and users. Used technologies like Node.js, Express.js, MongoDB and Tailwind CSS to deliver a seamless shopping experience.",
+        "Developed a modern and responsive eCommerce web application featuring product browsing, cart functionality, and secure user authentication. Implemented role-based access with JWT and bcrypt. Built an admin dashboard for managing products and users. Integrated Razorpay for secure and seamless online payments. Used technologies like Node.js, Express.js, MongoDB and Tailwind CSS to deliver a seamless shopping experience.",
+    },
+    {
+      title: "MERN App with Admin Panel and Authorization",
+      content:
+        "Built a full-stack MERN application featuring user registration, login, and dark/light mode. Implemented secure password handling with bcrypt and JWT. Developed an admin panel with CRUD capabilities for managing users and ensured robust authentication and authorization.",
     },
     {
       title: "Potato Leaf Blight Detection",
@@ -186,11 +246,7 @@ const projects = {
       content:
         "Collaborated as part of a six-member team to create games like Snake, Rock-Paper-Scissors, and Pong using OpenCV for gesture recognition. Enabled users to interact with the games through real-time hand gestures, enhancing accessibility and user experience.",
     },
-    {
-      title: "MERN App with Admin Panel and Authorization",
-      content:
-        "Built a full-stack MERN application featuring user registration, login, and dark/light mode. Implemented secure password handling with bcrypt and JWT. Developed an admin panel with CRUD capabilities for managing users and ensured robust authentication and authorization.",
-    },
+    
     {
       title: "Virtual Herbal Garden",
       content:
@@ -251,7 +307,7 @@ const resume = () => {
               <h1 className="text-3xl border-accent inline border-b-2 mb-2 font-bold">
                 Education
               </h1>
-              <div className="p-2 rounded-lg shadow-md border-2 border-gray-800">
+              <div className="p-2 mt-5 rounded-lg shadow-md border-2 border-gray-800">
                 <h1 className="text-xl mb-2 font-bold text-gray-300 ">
                   {education.college.degree}
                 </h1>
@@ -298,11 +354,11 @@ const resume = () => {
             </TabsContent>
 
             {/* skills */}
-            <TabsContent value="skills" className="w-full">
+            <TabsContent value="skills" className="">
+                <h1 className="text-3xl border-accent inline border-b-2 mb-2 font-bold">
+                Skills
+              </h1>
               <div className="w-full inline flex flex-col p-4 rounded-lg shadow-md">
-                <h1 className="text-3xl border-accent border-b-2 mb-3 font-bold">
-                  Skills
-                </h1>
 
                 <p className="mb-4">{skills.description}</p>
                 <div className="mb-4 flex flex-wrap gap-2 rounded-lg shadow-md">
@@ -328,22 +384,23 @@ const resume = () => {
                 Projects
               </h1>
               <p className="mt-4 mb-4">{projects.description}</p>
-              {projects.details.map((elem, index) => {
-                return (
-                  <div
-                    key={index}
-                    className="p-4 rounded-lg shadow-md border-2 border-gray-800"
-                  >
-                    <h1 className="text-xl mb-2 font-bold text-white ">
-                      {"-> "}
-                      {elem.title}
-                    </h1>
-                    <p className="text-lg font-bold text-gray-400">
-                      {elem.content}
-                    </p>
-                  </div>
-                );
-              })}
+              {projects.details.map((elem, index) => (
+                <div
+                  key={index}
+                  className="p-4 rounded-lg shadow-md border-2 border-gray-800"
+                >
+                  <h1 className="text-xl mb-2 font-bold text-white">
+                    {"-> "}
+                    {elem.title}
+                  </h1>
+                  <p
+                    className="text-lg font-bold text-gray-400"
+                    dangerouslySetInnerHTML={{
+                      __html: highlightTechnologies(elem.content),
+                    }}
+                  />
+                </div>
+              ))}
             </TabsContent>
             {/* about me */}
             <TabsContent value="about" className="w-full">
@@ -351,15 +408,21 @@ const resume = () => {
                 About me
               </h1>
 
-              <p className="mt-4 mb-4">{about.description}</p>
+              <p
+                className="text-base text-lg font-bold text-gray-300 whitespace-pre-line mt-2"
+                dangerouslySetInnerHTML={{
+                  __html: highlightKeywords(about.description),
+                }}
+              />
 
               {about.info.map((elem, index) => (
-                <div key={index} className="mb-4">
-                  <p className="text-base text-lg font-bold text-gray-300">
-                    {elem.content}
-                  </p>
-                </div>
-              ))}
+  <div key={index} className="mb-4">
+    <p className="text-base text-lg font-bold text-gray-300">
+      {elem.title}: {elem.content}
+    </p>
+  </div>
+))}
+
             </TabsContent>
           </div>
         </Tabs>
