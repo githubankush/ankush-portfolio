@@ -230,30 +230,35 @@ const projects = {
       title: "Shoppy E-commerce Website",
       content:
         "Developed a modern and responsive eCommerce web application featuring product browsing, cart functionality, and secure user authentication. Implemented role-based access with JWT and bcrypt. Built an admin dashboard for managing products and users. Integrated Razorpay for secure and seamless online payments. Used technologies like Node.js, Express.js, MongoDB and Tailwind CSS to deliver a seamless shopping experience.",
+      link: "https://shopping-app-iy47.vercel.app", // live demo or GitHub repo
     },
     {
       title: "MERN App with Admin Panel and Authorization",
       content:
         "Built a full-stack MERN application featuring user registration, login, and dark/light mode. Implemented secure password handling with bcrypt and JWT. Developed an admin panel with CRUD capabilities for managing users and ensured robust authentication and authorization.",
+      link: "https://github.com/githubankush/Mern-App-with-AdminPanel", // update with real link
     },
     {
       title: "Potato Leaf Blight Detection",
       content:
         "Developed a system for detecting Potato Leaf Blight using TensorFlow and FastAPI. My role included data preprocessing and creating a React.js-based frontend for uploading leaf images. The project aimed to help farmers diagnose diseases early and improve crop health.",
+      link: "https://github.com/githubankush/Potato_Leaf_Blight", // update with real link
     },
     {
       title: "Gesture-Driven Gaming",
       content:
         "Collaborated as part of a six-member team to create games like Snake, Rock-Paper-Scissors, and Pong using OpenCV for gesture recognition. Enabled users to interact with the games through real-time hand gestures, enhancing accessibility and user experience.",
+      link: "https://github.com/githubankush/Minor_Project_2/", // update with real link
     },
-    
     {
       title: "Virtual Herbal Garden",
       content:
         "Created a 3D virtual herbal garden using next.js and three.js. The project aimed to provide an interactive and immersive experience for users to explore various herbs and their medicinal properties. My role included designing the user interface and integrating 3D models.",
+      link: "https://github.com/githubankush/1555", 
     },
   ],
 };
+
 
 const resume = () => {
   return (
@@ -384,24 +389,35 @@ const resume = () => {
                 Projects
               </h1>
               <p className="mt-4 mb-4">{projects.description}</p>
+
               {projects.details.map((elem, index) => (
                 <div
                   key={index}
-                  className="p-4 rounded-lg shadow-md border-2 border-gray-800"
+                  className="p-4 rounded-lg shadow-md border-2 border-gray-800 mb-4"
                 >
                   <h1 className="text-xl mb-2 font-bold text-white">
-                    {"-> "}
-                    {elem.title}
+                    {"-> "} {elem.title}
                   </h1>
                   <p
-                    className="text-lg font-bold text-gray-400"
+                    className="text-lg font-bold text-gray-400 mb-2"
                     dangerouslySetInnerHTML={{
                       __html: highlightTechnologies(elem.content),
                     }}
                   />
+                  {elem.link && (
+                    <a
+                      href={elem.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block mt-2 text-blue-400 hover:underline hover:text-blue-300 transition"
+                    >
+                      🔗 View Project
+                    </a>
+                  )}
                 </div>
               ))}
             </TabsContent>
+
             {/* about me */}
             <TabsContent value="about" className="w-full">
               <h1 className="text-3xl font-bold border-b-2 border-accent inline mb-4">
