@@ -233,10 +233,16 @@ const projects = {
       link: "https://shopping-app-iy47.vercel.app", // live demo or GitHub repo
     },
     {
+      title: "SeniorAid (Senior Citizen Helpl Portal)",
+      content:
+        "Created a caring community platform to support seniors worldwide, allowing them to request assistance, connect with volunteers, and stay engaged. Implemented secure user authentication with JWT and bcrypt, along with role-based access for seniors, volunteers, and admins. Built an admin dashboard to manage users and track assistance requests. Integrated notifications and reminders to ensure timely support. Technologies used include Node.js, Express.js, MongoDB, React.js, and Tailwind CSS for a seamless and responsive user experience.",
+      link: "https://senior-aid-website.vercel.app/" 
+    },
+    {
       title: "MERN App with Admin Panel and Authorization",
       content:
         "Built a full-stack MERN application featuring user registration, login, and dark/light mode. Implemented secure password handling with bcrypt and JWT. Developed an admin panel with CRUD capabilities for managing users and ensured robust authentication and authorization.",
-      link: "https://github.com/githubankush/Mern-App-with-AdminPanel", // update with real link
+      link: "https://mern-app-with-admin-panel-five.vercel.app/", // update with real link
     },
     {
       title: "Potato Leaf Blight Detection",
