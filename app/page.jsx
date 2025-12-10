@@ -35,7 +35,7 @@ const Home = () => {
                 <span> Download CV </span>
               </Button> */}
               <a
-                href="/Ankush_Kumayu_Resume.pdf"
+                href="/AnkushResume002.pdf"
                 download
                 target="_blank"
                 rel="noopener noreferrer"
